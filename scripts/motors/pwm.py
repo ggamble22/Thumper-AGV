@@ -33,13 +33,13 @@ class PWM():
             f.write(str(value))
 
     def duty(self, duty):
-        path = f'{self._dir}/duty{self._pin}'
+        path = '{0}/duty{1}'.format(self._dir, self._pin)
 
         if duty>=0 and duty<1024:
             self.write(path, duty)
 
     def duty_pct(self, duty):
-        path = f'{self._dir}/duty{self._pin}'
+        path = '{0}/duty{1}'.format(self._dir, self._pin)
 
         if duty>=0 and duty<=100:
             duty = (duty * (1023) / (100))
@@ -48,28 +48,28 @@ class PWM():
             self.write(path, duty)
 
     def duty_float(self, duty):
-        path = f'{self._dir}/duty{self._pin}'
+        path = '{0}/duty{1}'.format(self._dir, self._pin)
 
         if duty>=0 and duty<=1:
             duty = duty * 1023
 
-            duty = math.floor(duty)
+            duty = int(math.floor(duty))
             self.write(path, duty)
 
 
     def enable(self):
-        path = f'{self._dir}/enable{self._pin}'
+        path = '{0}/enable{1}'.format(self._dir, self._pin)
         val = 1
         self.write(path,val)
 
     def disable(self):
-        path = f'{self._dir}/enable{self._pin}'
+        path = '{0}/enable{1}'.format(self._dir, self._pin)
         val = 0
         self.write(path,val)
 
     def freq(self, freq):
         self._freq = freq
-        path = f'{self._dir}/freq{self._pin}'
+        path = '{0}/freq{1}'.format(self._dir, self._pin)
         self.write(path, self._freq)
 
 

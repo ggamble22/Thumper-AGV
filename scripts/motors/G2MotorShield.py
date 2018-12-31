@@ -1,8 +1,8 @@
 
 import wiringpi as wpi
-from pmw import PWM
+from pwm import PWM
 
-class G2MotorShield()
+class G2MotorShield():
   #pin definitions
   _dir=0
   _cs=0
@@ -44,7 +44,7 @@ class G2MotorShield()
     self.set_speed(0)
 
   def getFault(self):
-    return !wpi.digitalRead(_fault)
+    return not wpi.digitalRead(_fault)
 
 
 class DualG2MotorShield():
@@ -87,11 +87,11 @@ class DualG2MotorShield():
     return(self._motor.selfgetM1CurrentMilliamps(), )
 
 # Return error status for motor 1
-  def getM1Fault(self)
+  def getM1Fault(self):
     return self._motor1.getFault()
 
 # Return error status for motor 2
-  def getM2Fault(self)
+  def getM2Fault(self):
     return self._motor2.getFault()
 
   def getFaults(self):
